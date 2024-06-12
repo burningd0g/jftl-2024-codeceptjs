@@ -13,23 +13,26 @@ exports.config = {
       keepTraceForPassedTests: true,
       fullPageScreenshots: true,
       video: true,
-      windowSize: "1920x1080",
-    },
+      windowSize: '1920x1080'
+    }
   },
   include: {
     Je: './steps_file.js',
     accueilPage: './pages/Accueil.js',
     listeOffresPage: './pages/ListeOffres.js',
     popinCookiesPage: './pages/PopinCookies.js',
-    espaceCandidatPage: "./pages/EspaceCandidat.js",
-    connexionPage: "./pages/Connexion.js",
-    popinCookiesPage: './pages/PopinCookies.js',
+    espaceCandidatPage: './pages/EspaceCandidat.js',
+    connexionPage: './pages/Connexion.js'
   },
   mocha: {},
   bootstrap: null,
   timeout: null,
   teardown: null,
   hooks: [],
+  gherkin: {
+    features: './features/*.feature',
+    steps: ['./step_definitions/steps.js']
+  },
   plugins: {
     screenshotOnFail: {
       enabled: true
@@ -50,7 +53,7 @@ exports.config = {
     eachElement: {
       enabled: true
     },
-    pauseOnFail: {},
+    pauseOnFail: {}
   },
   stepTimeout: 0,
   stepTimeoutOverride: [{
