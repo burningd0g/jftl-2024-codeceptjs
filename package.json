@@ -1,0 +1,32 @@
+{
+    "name": "codeceptjs-tests",
+    "version": "0.1.0",
+    "private": true,
+    "scripts": {
+        "codeceptjs": "codeceptjs run --steps",
+        "codeceptjs:gherkin": "codeceptjs run --steps --grep \"@gherkin\"",
+        "codeceptjs:gherkin-hl": "HEADLESS=true codeceptjs run --steps --grep \"@gherkin\"",
+        "codeceptjs:api": "codeceptjs run --steps  --grep \"@api\"",
+        "codeceptjs:bouchon": "codeceptjs run --steps  --grep \"@bouchon\"",
+        "codeceptjs:def": "codeceptjs def",
+        "codeceptjs:headless": "HEADLESS=true codeceptjs run --steps",
+        "codeceptjs:ui": "codecept-ui --app",
+        "report:allure": "allure generate --clean --single-file -o ./output/allure",
+        "report:cucumber": "node report.js",
+        "report:clean": "node report_clean.js",
+        "documentation": "docker run --rm --volume .:/data pandoc/latex -f markdown -s --highlight-style espresso -t html5 README.md -o documentation/README.html --lua-filter=links-to-html.lua & docker run --rm --volume .:/data pandoc/latex -f markdown -s --highlight-style espresso -t html5 REPORTING.md -o documentation/REPORTING.html --lua-filter=links-to-html.lua & docker run --rm --volume .:/data pandoc/latex -f markdown -s --highlight-style espresso -t html5 CI.md -o documentation/CI.html --lua-filter=links-to-html.lua & docker run --rm --volume .:/data pandoc/latex -f markdown -s --highlight-style espresso -t html5 TEST_API.md -o documentation/TEST_API.html --lua-filter=links-to-html.lua & docker run --rm --volume .:/data pandoc/latex -f markdown -s --highlight-style espresso -t html5 TEST_CLASSIQUE.md -o documentation/TEST_CLASSIQUE.html --lua-filter=links-to-html.lua & docker run --rm --volume .:/data pandoc/latex -f markdown -s --highlight-style espresso -t html5 TEST_GHERKIN.md -o documentation/TEST_GHERKIN.html --lua-filter=links-to-html.lua & docker run --rm --volume .:/data pandoc/latex -f markdown -s --highlight-style espresso -t html5 BOUCHON.md -o documentation/BOUCHON.html --lua-filter=links-to-html.lua &  docker run --rm --volume .:/data pandoc/latex -f markdown -s --highlight-style espresso -t html5 ASTUCES.md -o documentation/ASTUCES.html --lua-filter=links-to-html.lua & docker run --rm --volume .:/data pandoc/latex -f markdown -s --highlight-style espresso -t html5 PAGE_OBJECT.md -o documentation/PAGE_OBJECT.html --lua-filter=links-to-html.lua & docker run --rm --volume .:/data pandoc/latex -f markdown -s --highlight-style espresso -t html5 PERSONA.md -o documentation/PERSONA.html --lua-filter=links-to-html.lua & echo \"<html><meta http-equiv='Refresh' content='0; url=README.html' /></html>\" > ./documentation/index.html",
+        "documentation:pdf": "docker run --rm --volume .:/data pandoc/latex  -t pdf --pdf-engine=xelatex -o documentation/documentation.pdf README.md TEST_CLASSIQUE.md TEST_GHERKIN.md PAGE_OBJECT.md TEST_API.md BOUCHON.md ASTUCES.md REPORTING.md PERSONA.md CI.md"
+    },
+    "devDependencies": {
+        "@codeceptjs/configure": "^1.0.1",
+        "@codeceptjs/examples": "^1.2.4",
+        "@codeceptjs/mock-request": "^0.3.1",
+        "@codeceptjs/ui": "^1.2.0",
+        "allure-codeceptjs": "^2.15.1",
+        "allure-commandline": "^2.29.0",
+        "codeceptjs": "^3.6.2",
+        "codeceptjs-cucumber-json-reporter": "^1.0.14",
+        "cucumber-html-reporter": "^7.1.1",
+        "playwright": "^1.43.1"
+    }
+}
