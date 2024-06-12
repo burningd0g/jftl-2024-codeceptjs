@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>PAGE_OBJECT</title>
+  <style>
+    html {
+      color: #1a1a1a;
+      background-color: #fdfdfd;
+    }
+    body {
+      margin: 0 auto;
+      max-width: 36em;
+      padding-left: 50px;
+      padding-right: 50px;
+      padding-top: 50px;
+      padding-bottom: 50px;
+      hyphens: auto;
+      overflow-wrap: break-word;
+      text-rendering: optimizeLegibility;
+      font-kerning: normal;
+    }
+    @media (max-width: 600px) {
+      body {
+        font-size: 0.9em;
+        padding: 12px;
+      }
+      h1 {
+        font-size: 1.8em;
+      }
+    }
+    @media print {
+      html {
+        background-color: white;
+      }
+      body {
+        background-color: transparent;
+        color: black;
+        font-size: 12pt;
+      }
+      p, h2, h3 {
+        orphans: 3;
+        widows: 3;
+      }
+      h2, h3, h4 {
+        page-break-after: avoid;
+      }
+    }
+    p {
+      margin: 1em 0;
+    }
+    a {
+      color: #1a1a1a;
+    }
+    a:visited {
+      color: #1a1a1a;
+    }
+    img {
+      max-width: 100%;
+    }
+    svg {
+      height: auto;
+      max-width: 100%;
+    }
+    h1, h2, h3, h4, h5, h6 {
+      margin-top: 1.4em;
+    }
+    h5, h6 {
+      font-size: 1em;
+      font-style: italic;
+    }
+    h6 {
+      font-weight: normal;
+    }
+    ol, ul {
+      padding-left: 1.7em;
+      margin-top: 1em;
+    }
+    li > ol, li > ul {
+      margin-top: 0;
+    }
+    blockquote {
+      margin: 1em 0 1em 1.7em;
+      padding-left: 1em;
+      border-left: 2px solid #e6e6e6;
+      color: #606060;
+    }
+    code {
+      font-family: Menlo, Monaco, Consolas, 'Lucida Console', monospace;
+      font-size: 85%;
+      margin: 0;
+      hyphens: manual;
+    }
+    pre {
+      margin: 1em 0;
+      overflow: auto;
+    }
+    pre code {
+      padding: 0;
+      overflow: visible;
+      overflow-wrap: normal;
+    }
+    .sourceCode {
+     background-color: transparent;
+     overflow: visible;
+    }
+    hr {
+      background-color: #1a1a1a;
+      border: none;
+      height: 1px;
+      margin: 1em 0;
+    }
+    table {
+      margin: 1em 0;
+      border-collapse: collapse;
+      width: 100%;
+      overflow-x: auto;
+      display: block;
+      font-variant-numeric: lining-nums tabular-nums;
+    }
+    table caption {
+      margin-bottom: 0.75em;
+    }
+    tbody {
+      margin-top: 0.5em;
+      border-top: 1px solid #1a1a1a;
+      border-bottom: 1px solid #1a1a1a;
+    }
+    th {
+      border-top: 1px solid #1a1a1a;
+      padding: 0.25em 0.5em 0.25em 0.5em;
+    }
+    td {
+      padding: 0.125em 0.5em 0.25em 0.5em;
+    }
+    header {
+      margin-bottom: 4em;
+      text-align: center;
+    }
+    #TOC li {
+      list-style: none;
+    }
+    #TOC ul {
+      padding-left: 1.3em;
+    }
+    #TOC > ul {
+      padding-left: 0;
+    }
+    #TOC a:not(:hover) {
+      text-decoration: none;
+    }
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+    .display.math{display: block; text-align: center; margin: 0.5rem auto;}
+    /* CSS for syntax highlighting */
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+        background-color: #2a211c;
+        color: #bdae9d;
+      }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #bdae9d;  padding-left: 4px; }
+    div.sourceCode
+      { color: #bdae9d; background-color: #2a211c; }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span.al { color: #ffff00; } /* Alert */
+    code span.an { color: #0066ff; font-weight: bold; font-style: italic; } /* Annotation */
+    code span.at { } /* Attribute */
+    code span.bn { color: #44aa43; } /* BaseN */
+    code span.bu { } /* BuiltIn */
+    code span.cf { color: #43a8ed; font-weight: bold; } /* ControlFlow */
+    code span.ch { color: #049b0a; } /* Char */
+    code span.cn { } /* Constant */
+    code span.co { color: #0066ff; font-weight: bold; font-style: italic; } /* Comment */
+    code span.do { color: #0066ff; font-style: italic; } /* Documentation */
+    code span.dt { text-decoration: underline; } /* DataType */
+    code span.dv { color: #44aa43; } /* DecVal */
+    code span.er { color: #ffff00; font-weight: bold; } /* Error */
+    code span.ex { } /* Extension */
+    code span.fl { color: #44aa43; } /* Float */
+    code span.fu { color: #ff9358; font-weight: bold; } /* Function */
+    code span.im { } /* Import */
+    code span.in { color: #0066ff; font-weight: bold; font-style: italic; } /* Information */
+    code span.kw { color: #43a8ed; font-weight: bold; } /* Keyword */
+    code span.op { } /* Operator */
+    code span.pp { font-weight: bold; } /* Preprocessor */
+    code span.sc { color: #049b0a; } /* SpecialChar */
+    code span.ss { color: #049b0a; } /* SpecialString */
+    code span.st { color: #049b0a; } /* String */
+    code span.va { } /* Variable */
+    code span.vs { color: #049b0a; } /* VerbatimString */
+    code span.wa { color: #ffff00; font-weight: bold; } /* Warning */
+  </style>
+</head>
+<body>
+<h1 id="le-pattern-page-object-sur-codecept-js">Le pattern Page Object
+sur CodeCept JS</h1>
+<h2 id="initialiser-un-page-object">Initialiser un page object</h2>
+<p>La création est intégrée à l’outil par la commande :</p>
+<div class="sourceCode" id="cb1"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">npx</span> codeceptjs gpo</span></code></pre></div>
+<p>Cela demandera le nom de la page puis le lieu de stockage.<br />
+L’exemple ici utilisera les pages “Accueil” et “ListeOffres” dans le
+dossier par défaut “pages” et au format “module”.</p>
+<p>Le shell interactif va créer le fichier “Accueil.js” contenant :</p>
+<div class="sourceCode" id="cb2"><pre
+class="sourceCode javascript"><code class="sourceCode javascript"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> { I } <span class="op">=</span> <span class="fu">inject</span>()<span class="op">;</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>module<span class="op">.</span><span class="at">exports</span> <span class="op">=</span> {</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>  <span class="co">// insert your locators and methods here</span></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<p>Si l’on utilise la localisation “FR”, il faudra peut-être modifier
+les injections pour ajouter “Je” :</p>
+<div class="sourceCode" id="cb3"><pre
+class="sourceCode javascript"><code class="sourceCode javascript"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> { I<span class="op">,</span> Je } <span class="op">=</span> <span class="fu">inject</span>()<span class="op">;</span></span></code></pre></div>
+<p>Et il ajoutera à codecept.conf.js l’include nécessaire :</p>
+<div class="sourceCode" id="cb4"><pre
+class="sourceCode javascript"><code class="sourceCode javascript"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>include<span class="op">:</span> {</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>    <span class="dt">Je</span><span class="op">:</span> <span class="st">&#39;./steps_file.js&#39;</span><span class="op">,</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>    <span class="dt">accueilPage</span><span class="op">:</span> <span class="st">&quot;./pages/Accueil.js&quot;</span><span class="op">,</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>  }<span class="op">,</span></span></code></pre></div>
+<p>Pour utiliser le pageobject dans un test classique, il suffira de le
+rajouter en paramètre du test en plus de la persona (I/Je par défaut)
+:</p>
+<div class="sourceCode" id="cb5"><pre
+class="sourceCode javascript"><code class="sourceCode javascript"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">Scénario</span>(<span class="st">&#39;Faire une recherche&#39;</span><span class="op">,</span>  <span class="kw">async</span> ({ Je<span class="op">,</span> accueilPage<span class="op">,</span> listeOffresPage<span class="op">,</span> popinCookiesPage }) <span class="kw">=&gt;</span> {</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a> <span class="co">/*</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="co"> ...</span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="co"> */</span></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>})<span class="op">;</span></span></code></pre></div>
+<h1 id="utiliser-un-page-object">Utiliser un page object</h1>
+<p>Pour l’utiliser en test gherkin, il faut ajouter l’injection en début
+du fichier de steps definitions :</p>
+<div class="sourceCode" id="cb6"><pre
+class="sourceCode javascript"><code class="sourceCode javascript"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> { I<span class="op">,</span> Je } <span class="op">=</span> <span class="fu">inject</span>()<span class="op">;</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> { accueilPage<span class="op">,</span> listeOffresPage } <span class="op">=</span> <span class="fu">inject</span>()<span class="op">;</span></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="fu">Given</span>(<span class="st">&#39;je suis connecté&#39;</span><span class="op">,</span> () <span class="kw">=&gt;</span> {</span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>  <span class="co">/*</span></span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a><span class="co">    ...</span></span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a><span class="co">  */</span></span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>})<span class="op">;</span></span></code></pre></div>
+<h2 id="le-pattern-pageoject">Le Pattern PageOject</h2>
+<p>Ce concept permet d’avoir des objets qui vont servir a manipuler
+l’application et mutualiser (permettre de réutiliser) des éléments de
+l’écran dans plusieurs tests ou scénarios différents.</p>
+<p>Le PageObject ne doit contenir que ce qui permet d’identifier les
+éléments (bouton, champs, image, zone texte, etc.) et de quoi réaliser
+des actions sur ceux-ci.</p>
+<p>Les contrôles (assertions) seront dans les tests car ils sont
+spécifiques aux tests. Une exception peut-être une méthode permettant
+d’attendre/manipuler un chargement long/non géré par le framework
+d’automatisation qui serait utilisée dans <strong>plusieurs</strong>
+tests.</p>
+<p>CodeCept utilisant des actions très simples de manipulation et gérant
+le concept d’acteur, le PageObject pourra porter uniquement les éléments
+d’identification qui seront utilisés ensuite dans les tests.<br />
+Il n’y a pas d’intérêt à faire un page.clicksurbouton() plutôt qu’un
+simple Je.clickSur(page.bouton).<br />
+Le test portant ainsi l’acteur, cela permet une lisibilité accrue.</p>
+<p>Exemple Page-Object sur écran de connexion :</p>
+<div class="sourceCode" id="cb7"><pre
+class="sourceCode javascript"><code class="sourceCode javascript"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>module<span class="op">.</span><span class="at">exports</span> <span class="op">=</span> {</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>  <span class="dt">champs</span><span class="op">:</span> {</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>    <span class="dt">identifiant</span><span class="op">:</span> <span class="st">&quot;#identifiant&quot;</span><span class="op">,</span></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>    <span class="dt">motDePasse</span><span class="op">:</span> <span class="st">&quot;#password&quot;</span><span class="op">,</span></span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>  }<span class="op">,</span></span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>  <span class="dt">boutons</span><span class="op">:</span> {</span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>    <span class="dt">poursuivre</span><span class="op">:</span> <span class="st">&quot;#submit&quot;</span><span class="op">,</span></span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>    <span class="dt">seConnecter</span><span class="op">:</span> <span class="st">&quot;#submit&quot;</span><span class="op">,</span></span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<p>Utilisation du page object dans un test</p>
+<div class="sourceCode" id="cb8"><pre
+class="sourceCode javascript"><code class="sourceCode javascript"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>Je<span class="op">.</span><span class="fu">voisLElément</span>(connexionPage<span class="op">.</span><span class="at">boutons</span><span class="op">.</span><span class="at">poursuivre</span>)<span class="op">;</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>Je<span class="op">.</span><span class="fu">remplisLeChamp</span>(connexionPage<span class="op">.</span><span class="at">champs</span><span class="op">.</span><span class="at">identifiant</span><span class="op">,</span> <span class="st">&quot;mon-login&quot;</span>)<span class="op">;</span></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>Je<span class="op">.</span><span class="fu">cliqueSur</span>(connexionPage<span class="op">.</span><span class="at">boutons</span><span class="op">.</span><span class="at">poursuivre</span>)<span class="op">;</span></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>Je<span class="op">.</span><span class="fu">remplisLeChamp</span>(connexionPage<span class="op">.</span><span class="at">champs</span><span class="op">.</span><span class="at">motDePasse</span><span class="op">,</span> <span class="st">&quot;secret&quot;</span>)<span class="op">;</span></span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>Je<span class="op">.</span><span class="fu">cliqueSur</span>(connexionPage<span class="op">.</span><span class="at">boutons</span><span class="op">.</span><span class="at">seConnecter</span>)<span class="op">;</span></span></code></pre></div>
+<h2 id="page-fragment">Page Fragment</h2>
+<p>Pour les cas spécifiques, tel que iframe ou widget, il est possible
+de créer des page fragement qui permettront de de contraindre les
+actions DANS le fragment est donner une lisibilité accrue.</p>
+<p>Créer le page fragment :</p>
+<div class="sourceCode" id="cb9"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="ex">npx</span> codeceptjs go <span class="at">--type</span> fragment</span></code></pre></div>
+<p>Exemple de contenu :</p>
+<div class="sourceCode" id="cb10"><pre
+class="sourceCode javascript"><code class="sourceCode javascript"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> { Je } <span class="op">=</span> <span class="fu">inject</span>()<span class="op">;</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="co">// fragments/modale.js</span></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>module<span class="op">.</span><span class="at">exports</span> <span class="op">=</span> {</span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>  <span class="dt">racine</span><span class="op">:</span> <span class="st">&#39;#modal&#39;</span><span class="op">,</span></span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>  <span class="dt">boutons</span> <span class="op">:</span> {</span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a>    <span class="dt">accepter</span><span class="op">:</span> <span class="st">&#39;#accept&#39;</span></span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<p>L’utiliser :</p>
+<div class="sourceCode" id="cb11"><pre
+class="sourceCode javascript"><code class="sourceCode javascript"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">Scenario</span>(<span class="st">&#39;fragment&#39;</span><span class="op">,</span> <span class="kw">async</span> ({ j<span class="op">,</span>  modale }) <span class="kw">=&gt;</span> {</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>  I<span class="op">.</span><span class="fu">attendsPourVoir</span>(modale<span class="op">.</span><span class="at">racine</span>)<span class="op">;</span></span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">within</span>(modale<span class="op">.</span><span class="at">racine</span><span class="op">,</span> <span class="kw">function</span> () {</span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>    I<span class="op">.</span><span class="fu">cliqueSur</span>(racine<span class="op">.</span><span class="at">boutons</span><span class="op">.</span><span class="at">accepter</span>)<span class="op">;</span></span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>  })</span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>})<span class="op">;</span></span></code></pre></div>
+<p>Cela reste techniquement un concept de page object avec une propriété
+racine (root) permettant d’exploiter la fonctionnalité
+<code>within</code> de codeceptjs.</p>
+<p>Plus de détails: https://codecept.io/pageobjects/#page-fragments</p>
+<h2 id="retour-accueil"><a href="README.html">Retour Accueil</a></h2>
+</body>
+</html>

@@ -5,6 +5,7 @@ exports.config = {
       endpoint: 'https://api.francetravail.io',
       prettyPrintJson: true
     },
+    JSONResponse: {},
     Playwright: {
       browser: 'chromium',
       url: 'https://www.francetravail.fr',
@@ -13,16 +14,22 @@ exports.config = {
       keepTraceForPassedTests: true,
       fullPageScreenshots: true,
       video: true,
-      windowSize: '1920x1080'
+      windowSize: "1920x1080",
+    },
+    MockRequestHelper: {
+      require: '@codeceptjs/mock-request',
     }
   },
   include: {
+    CandidatConnecte: './actors/CandidatConnecté.js',
+    CandidatNonConnecte: './actors/CandidatNonConnecté.js',
     Je: './steps_file.js',
     accueilPage: './pages/Accueil.js',
     listeOffresPage: './pages/ListeOffres.js',
     popinCookiesPage: './pages/PopinCookies.js',
-    espaceCandidatPage: './pages/EspaceCandidat.js',
-    connexionPage: './pages/Connexion.js'
+    espaceCandidatPage: "./pages/EspaceCandidat.js",
+    connexionPage: "./pages/Connexion.js",
+    popinCookiesPage: './pages/PopinCookies.js'
   },
   mocha: {},
   bootstrap: null,
@@ -53,7 +60,20 @@ exports.config = {
     eachElement: {
       enabled: true
     },
-    pauseOnFail: {}
+    pauseOnFail: {},
+    cucumberJsonReporter: {
+      require: 'codeceptjs-cucumber-json-reporter',
+      enabled: true, 
+      attachScreenshots: true,     
+      attachComments: true,        
+      outputFile: 'cucumber.json',     
+      includeExampleValues: true,
+      timeMultiplier: 1000000,   
+    },
+    allure: {
+      enabled: true,
+      require: "allure-codeceptjs",
+    },
   },
   stepTimeout: 0,
   stepTimeoutOverride: [{

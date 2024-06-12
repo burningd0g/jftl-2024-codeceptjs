@@ -1,0 +1,63 @@
+repo-git: &repo-git
+  uri: ssh://git@git.binard.info/conferences/jftl/2024-codeceptjs.git
+  branch: master
+  private_key: ((gitlab.cle_privee))
+
+check_git: &check_git
+  type: git
+  check_every: never
+  webhook_token: token-du-webhook
+
+
+resources:
+  - name: repo-ci
+    type: git
+    icon: gitlab
+    source:
+      <<: *repo-git
+      paths:
+        - ci
+    <<: *check_git
+  - name: repo-test
+    type: git
+    icon: gitlab
+    source:
+      <<: *repo-git
+      ignore_paths:
+        - ci
+    <<: *check_git
+
+jobs:
+  ## Gestion Pipeline## 
+  - name: installation-pipeline
+    public: true
+    plan:
+      - get: repo-ci
+        trigger: true
+      - set_pipeline: self
+        file: repo-ci/ci/concourse/pipeline.yml
+ # Tests  
+  - name: vnr-map-codeceptjs
+    public: true
+    plan:
+      - in_parallel:
+          - get: repo-test
+            trigger: true
+          - get: repo-ci
+      - task: run-test
+        privileged: true
+        file: repo-ci/ci/tasks/lancer-codecept.yml
+        input_mapping:
+          tests: repo-test
+        output_mapping:
+          rapport-de-test: rapport-d-execution
+        params:
+          runArg: ''
+          ENV: 'prod'
+        timeout: 120m
+#
+#   !! Ajouter la tache de sauvegarde de rapport adapté
+#
+#        ensure:
+#          task: sauvegarde-le-rapport-de-tests
+          

@@ -1,0 +1,44 @@
+platform: linux
+image_resource:
+  type: docker-image
+  source:
+    repository: ((docker.registre))/codeceptjs/codeceptjs
+    tag: 3.x
+inputs:
+  - name: tests
+outputs:
+  - name: rapport-de-test
+    path: tests/output
+params:
+  ENV: 'staging'
+  runArg: ''
+run:
+  path: /bin/bash
+  args:
+    - -ec
+    - |
+
+      #echo "Config repo NPM"
+      #npm config set registry https://<mon repo interne>/npm/npm-public 
+      #npm config set strict-ssl false
+
+      # si repo interne pour 
+      #export PLAYWRIGHT_DOWNLOAD_HOST=http://<mon repo interne>/playwright-proxy
+      cd tests
+      echo 'NPM Install'
+      npm install
+      npx playwright install --with-deps chromium
+      
+      npm run report:clean
+
+      ## pour forcer le mode headless si besoin
+      #sed -i 's/show: true/show: false/g' codecept.conf.js
+
+      ## Les tart tests
+      echo "Lancement des tests"
+      export TZ='Europe/Paris'
+      npm run codeceptjs:headless || testFailed='true' #permet de passer une commande tierce APRES les tests meme si KO
+      npm run report:cucumber
+
+      
+      [[ "$testFailed" != 'true' ]] 

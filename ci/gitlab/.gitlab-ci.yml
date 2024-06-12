@@ -1,0 +1,21 @@
+image: codeceptjs/codeceptjs
+
+stages:
+  - tests
+
+codeceptjs:
+  stage: tests
+  before_script:
+    - npm install --legacy-peer-deps
+    - npx playwright install --with-deps chromium
+    - npm run report:clean
+  
+  after_script:
+    - npm run report:cucumber
+    - cp -r output/ ci_artifacts/
+  artifacts:
+    name: "$CI_JOB_STAGE-$CI_COMMIT_REF_NAME"
+    paths:
+      - ci_artifacts/
+    when: always
+    

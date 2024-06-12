@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>README</title>
+  <style>
+    html {
+      color: #1a1a1a;
+      background-color: #fdfdfd;
+    }
+    body {
+      margin: 0 auto;
+      max-width: 36em;
+      padding-left: 50px;
+      padding-right: 50px;
+      padding-top: 50px;
+      padding-bottom: 50px;
+      hyphens: auto;
+      overflow-wrap: break-word;
+      text-rendering: optimizeLegibility;
+      font-kerning: normal;
+    }
+    @media (max-width: 600px) {
+      body {
+        font-size: 0.9em;
+        padding: 12px;
+      }
+      h1 {
+        font-size: 1.8em;
+      }
+    }
+    @media print {
+      html {
+        background-color: white;
+      }
+      body {
+        background-color: transparent;
+        color: black;
+        font-size: 12pt;
+      }
+      p, h2, h3 {
+        orphans: 3;
+        widows: 3;
+      }
+      h2, h3, h4 {
+        page-break-after: avoid;
+      }
+    }
+    p {
+      margin: 1em 0;
+    }
+    a {
+      color: #1a1a1a;
+    }
+    a:visited {
+      color: #1a1a1a;
+    }
+    img {
+      max-width: 100%;
+    }
+    svg {
+      height: auto;
+      max-width: 100%;
+    }
+    h1, h2, h3, h4, h5, h6 {
+      margin-top: 1.4em;
+    }
+    h5, h6 {
+      font-size: 1em;
+      font-style: italic;
+    }
+    h6 {
+      font-weight: normal;
+    }
+    ol, ul {
+      padding-left: 1.7em;
+      margin-top: 1em;
+    }
+    li > ol, li > ul {
+      margin-top: 0;
+    }
+    blockquote {
+      margin: 1em 0 1em 1.7em;
+      padding-left: 1em;
+      border-left: 2px solid #e6e6e6;
+      color: #606060;
+    }
+    code {
+      font-family: Menlo, Monaco, Consolas, 'Lucida Console', monospace;
+      font-size: 85%;
+      margin: 0;
+      hyphens: manual;
+    }
+    pre {
+      margin: 1em 0;
+      overflow: auto;
+    }
+    pre code {
+      padding: 0;
+      overflow: visible;
+      overflow-wrap: normal;
+    }
+    .sourceCode {
+     background-color: transparent;
+     overflow: visible;
+    }
+    hr {
+      background-color: #1a1a1a;
+      border: none;
+      height: 1px;
+      margin: 1em 0;
+    }
+    table {
+      margin: 1em 0;
+      border-collapse: collapse;
+      width: 100%;
+      overflow-x: auto;
+      display: block;
+      font-variant-numeric: lining-nums tabular-nums;
+    }
+    table caption {
+      margin-bottom: 0.75em;
+    }
+    tbody {
+      margin-top: 0.5em;
+      border-top: 1px solid #1a1a1a;
+      border-bottom: 1px solid #1a1a1a;
+    }
+    th {
+      border-top: 1px solid #1a1a1a;
+      padding: 0.25em 0.5em 0.25em 0.5em;
+    }
+    td {
+      padding: 0.125em 0.5em 0.25em 0.5em;
+    }
+    header {
+      margin-bottom: 4em;
+      text-align: center;
+    }
+    #TOC li {
+      list-style: none;
+    }
+    #TOC ul {
+      padding-left: 1.3em;
+    }
+    #TOC > ul {
+      padding-left: 0;
+    }
+    #TOC a:not(:hover) {
+      text-decoration: none;
+    }
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+    .display.math{display: block; text-align: center; margin: 0.5rem auto;}
+    /* CSS for syntax highlighting */
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+        background-color: #2a211c;
+        color: #bdae9d;
+      }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #bdae9d;  padding-left: 4px; }
+    div.sourceCode
+      { color: #bdae9d; background-color: #2a211c; }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span.al { color: #ffff00; } /* Alert */
+    code span.an { color: #0066ff; font-weight: bold; font-style: italic; } /* Annotation */
+    code span.at { } /* Attribute */
+    code span.bn { color: #44aa43; } /* BaseN */
+    code span.bu { } /* BuiltIn */
+    code span.cf { color: #43a8ed; font-weight: bold; } /* ControlFlow */
+    code span.ch { color: #049b0a; } /* Char */
+    code span.cn { } /* Constant */
+    code span.co { color: #0066ff; font-weight: bold; font-style: italic; } /* Comment */
+    code span.do { color: #0066ff; font-style: italic; } /* Documentation */
+    code span.dt { text-decoration: underline; } /* DataType */
+    code span.dv { color: #44aa43; } /* DecVal */
+    code span.er { color: #ffff00; font-weight: bold; } /* Error */
+    code span.ex { } /* Extension */
+    code span.fl { color: #44aa43; } /* Float */
+    code span.fu { color: #ff9358; font-weight: bold; } /* Function */
+    code span.im { } /* Import */
+    code span.in { color: #0066ff; font-weight: bold; font-style: italic; } /* Information */
+    code span.kw { color: #43a8ed; font-weight: bold; } /* Keyword */
+    code span.op { } /* Operator */
+    code span.pp { font-weight: bold; } /* Preprocessor */
+    code span.sc { color: #049b0a; } /* SpecialChar */
+    code span.ss { color: #049b0a; } /* SpecialString */
+    code span.st { color: #049b0a; } /* String */
+    code span.va { } /* Variable */
+    code span.vs { color: #049b0a; } /* VerbatimString */
+    code span.wa { color: #ffff00; font-weight: bold; } /* Warning */
+  </style>
+</head>
+<body>
+<h1 id="codecept-js">CodeCept JS</h1>
+<p>Site web officiel : <a
+href="https://codecept.io/">https://codecept.io/</a></p>
+<p>Cet outil dispose des capacités pour l’automatisation test Front (IHM
+Web) &amp; Back (API Rest), le bouchonnage à la volée par interception
+de requête pour le front, il supporte également le test des applications
+mobile.</p>
+<p>C’est un framework agnostique du driver, que l’on souhaite utiliser
+Playwright, WebDriver, Puppeteer, TestCafe, Protractor ou Appium : le
+code de test sera le même.<br />
+Il dispose également d’un debugger interactif.</p>
+<h2 id="pré-requis">Pré-Requis</h2>
+<p>Disposer de nodejs v14 minimum.</p>
+<h2 id="limites">Limites</h2>
+<p>L’abstraction multi drivers des bouchons n’est pas exploitable à
+l’identique sur tous les drivers.</p>
+<h2 id="initialiser-le-projet">Initialiser le projet</h2>
+<p>Codecept intègre un installateur tout en un, en une commande cela
+créé le projet et fourni un cas d’exemple :</p>
+<div class="sourceCode" id="cb1"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">npx</span> create-codeceptjs .</span></code></pre></div>
+<p>Ensuite il faudra lancer l’initialisation interactive du projet :</p>
+<div class="sourceCode" id="cb2"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="ex">npx</span> codeceptjs init</span></code></pre></div>
+<p>Cela permet de choisir différents paramètres tel que :</p>
+<ul>
+<li><p>L’activation de typescript (Non par défaut)</p></li>
+<li><p>L’emplacement et le nommage des tests ( dossier courant par
+défaut et fichier se terminant r _test.js )</p></li>
+<li><p>Le Driver parmi :</p>
+<ul>
+<li>Playwright (par défaut)</li>
+<li>WebDriver</li>
+<li>Puppeteer</li>
+<li>REST</li>
+<li>GraphQL</li>
+<li>Appium</li>
+<li>TestCafe</li>
+</ul></li>
+<li><p>le dossier contenant logs, capture d’écran et rsudo aptapports (
+./output par défaut )</p></li>
+<li><p>le choix de la localisation coode dans une langue spécifique
+(aucun par défaut)</p></li>
+</ul>
+<p>Concernant playwright, il sera demandé le navigateur à utiliser :
+chromium (défaut), firefox, webkit, electron.<br />
+Il sera demandé l’URL d’accès à l’application
+(https://www.francetravail.fr dans cet exemple) ainsi que le choix
+d’afficher le navigateur. (affiché par défaut)</p>
+<p>Nous allons choisir les options par défaut sauf la location où l’on
+prendra ‘fr-FR’.</p>
+<p>Il sera demandé le nom de la fonctionnalité testée puis le nom du
+fichier de tests.</p>
+<p>Enfin il faudra installer les dépendances playwright :</p>
+<div class="sourceCode" id="cb3"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="ex">npx</span> playwright install <span class="at">--with-deps</span> chromium</span></code></pre></div>
+<p>Ensuite deux modes de tests sont possibles :</p>
+<ul>
+<li>Tests simple avec support d’une notion de langage métier/description
+des tests.</li>
+<li>Tests gherkin pour faire du Behavior Driven Development</li>
+</ul>
+<p>Dans tous les cas il sera important de s’attarder sur les concepts
+intégrés à l’outil pour :</p>
+<ul>
+<li>les bouchons</li>
+<li>le pattern page object</li>
+<li>la gestion de persona</li>
+</ul>
+<p>## Faire ses premiers tests</p>
+<p>Deux types de tests :</p>
+<ul>
+<li><a href="TEST_CLASSIQUE.html">Classique</a> : test classique</li>
+<li><a href="TEST_GHERKIN.html">Gherkin/Cucumber</a> : pour faire du
+béhavior driven develpoment</li>
+</ul>
+<p>Voici différents points pour aller plus loin :</p>
+<ul>
+<li><a href="PAGE_OBJECT.html">Page Object</a></li>
+<li><a href="TEST_API.html">Test d’api</a></li>
+<li><a href="BOUCHON.html">Bouchons</a></li>
+</ul>
+<p>Pour une utilisation plus avancée :</p>
+<ul>
+<li><a href="ASTUCES.html">Astuces</a></li>
+<li><a href="REPORTING.html">Reporting</a></li>
+<li><a href="PERSONA.html">Persona</a></li>
+<li><a href="CI.html">Continious Integration</a></li>
+</ul>
+</body>
+</html>

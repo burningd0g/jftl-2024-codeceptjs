@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>ASTUCES</title>
+  <style>
+    html {
+      color: #1a1a1a;
+      background-color: #fdfdfd;
+    }
+    body {
+      margin: 0 auto;
+      max-width: 36em;
+      padding-left: 50px;
+      padding-right: 50px;
+      padding-top: 50px;
+      padding-bottom: 50px;
+      hyphens: auto;
+      overflow-wrap: break-word;
+      text-rendering: optimizeLegibility;
+      font-kerning: normal;
+    }
+    @media (max-width: 600px) {
+      body {
+        font-size: 0.9em;
+        padding: 12px;
+      }
+      h1 {
+        font-size: 1.8em;
+      }
+    }
+    @media print {
+      html {
+        background-color: white;
+      }
+      body {
+        background-color: transparent;
+        color: black;
+        font-size: 12pt;
+      }
+      p, h2, h3 {
+        orphans: 3;
+        widows: 3;
+      }
+      h2, h3, h4 {
+        page-break-after: avoid;
+      }
+    }
+    p {
+      margin: 1em 0;
+    }
+    a {
+      color: #1a1a1a;
+    }
+    a:visited {
+      color: #1a1a1a;
+    }
+    img {
+      max-width: 100%;
+    }
+    svg {
+      height: auto;
+      max-width: 100%;
+    }
+    h1, h2, h3, h4, h5, h6 {
+      margin-top: 1.4em;
+    }
+    h5, h6 {
+      font-size: 1em;
+      font-style: italic;
+    }
+    h6 {
+      font-weight: normal;
+    }
+    ol, ul {
+      padding-left: 1.7em;
+      margin-top: 1em;
+    }
+    li > ol, li > ul {
+      margin-top: 0;
+    }
+    blockquote {
+      margin: 1em 0 1em 1.7em;
+      padding-left: 1em;
+      border-left: 2px solid #e6e6e6;
+      color: #606060;
+    }
+    code {
+      font-family: Menlo, Monaco, Consolas, 'Lucida Console', monospace;
+      font-size: 85%;
+      margin: 0;
+      hyphens: manual;
+    }
+    pre {
+      margin: 1em 0;
+      overflow: auto;
+    }
+    pre code {
+      padding: 0;
+      overflow: visible;
+      overflow-wrap: normal;
+    }
+    .sourceCode {
+     background-color: transparent;
+     overflow: visible;
+    }
+    hr {
+      background-color: #1a1a1a;
+      border: none;
+      height: 1px;
+      margin: 1em 0;
+    }
+    table {
+      margin: 1em 0;
+      border-collapse: collapse;
+      width: 100%;
+      overflow-x: auto;
+      display: block;
+      font-variant-numeric: lining-nums tabular-nums;
+    }
+    table caption {
+      margin-bottom: 0.75em;
+    }
+    tbody {
+      margin-top: 0.5em;
+      border-top: 1px solid #1a1a1a;
+      border-bottom: 1px solid #1a1a1a;
+    }
+    th {
+      border-top: 1px solid #1a1a1a;
+      padding: 0.25em 0.5em 0.25em 0.5em;
+    }
+    td {
+      padding: 0.125em 0.5em 0.25em 0.5em;
+    }
+    header {
+      margin-bottom: 4em;
+      text-align: center;
+    }
+    #TOC li {
+      list-style: none;
+    }
+    #TOC ul {
+      padding-left: 1.3em;
+    }
+    #TOC > ul {
+      padding-left: 0;
+    }
+    #TOC a:not(:hover) {
+      text-decoration: none;
+    }
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+    .display.math{display: block; text-align: center; margin: 0.5rem auto;}
+    /* CSS for syntax highlighting */
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+        background-color: #2a211c;
+        color: #bdae9d;
+      }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #bdae9d;  padding-left: 4px; }
+    div.sourceCode
+      { color: #bdae9d; background-color: #2a211c; }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span.al { color: #ffff00; } /* Alert */
+    code span.an { color: #0066ff; font-weight: bold; font-style: italic; } /* Annotation */
+    code span.at { } /* Attribute */
+    code span.bn { color: #44aa43; } /* BaseN */
+    code span.bu { } /* BuiltIn */
+    code span.cf { color: #43a8ed; font-weight: bold; } /* ControlFlow */
+    code span.ch { color: #049b0a; } /* Char */
+    code span.cn { } /* Constant */
+    code span.co { color: #0066ff; font-weight: bold; font-style: italic; } /* Comment */
+    code span.do { color: #0066ff; font-style: italic; } /* Documentation */
+    code span.dt { text-decoration: underline; } /* DataType */
+    code span.dv { color: #44aa43; } /* DecVal */
+    code span.er { color: #ffff00; font-weight: bold; } /* Error */
+    code span.ex { } /* Extension */
+    code span.fl { color: #44aa43; } /* Float */
+    code span.fu { color: #ff9358; font-weight: bold; } /* Function */
+    code span.im { } /* Import */
+    code span.in { color: #0066ff; font-weight: bold; font-style: italic; } /* Information */
+    code span.kw { color: #43a8ed; font-weight: bold; } /* Keyword */
+    code span.op { } /* Operator */
+    code span.pp { font-weight: bold; } /* Preprocessor */
+    code span.sc { color: #049b0a; } /* SpecialChar */
+    code span.ss { color: #049b0a; } /* SpecialString */
+    code span.st { color: #049b0a; } /* String */
+    code span.va { } /* Variable */
+    code span.vs { color: #049b0a; } /* VerbatimString */
+    code span.wa { color: #ffff00; font-weight: bold; } /* Warning */
+  </style>
+</head>
+<body>
+<h1 id="petits-bonus">Petits bonus</h1>
+<h2 id="playwright">Playwright</h2>
+<h3 id="activer-les-videos">Activer les videos</h3>
+<div class="sourceCode" id="cb1"><pre
+class="sourceCode javascript"><code class="sourceCode javascript"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>Playwright<span class="op">:</span> {</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>      <span class="op">...</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>      <span class="dt">video</span><span class="op">:</span> <span class="kw">true</span><span class="op">,</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>    }</span></code></pre></div>
+<h3 id="activer-les-traces">Activer les traces</h3>
+<div class="sourceCode" id="cb2"><pre
+class="sourceCode javascript"><code class="sourceCode javascript"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>Playwright<span class="op">:</span> {</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>      <span class="op">...</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>      <span class="dt">trace</span><span class="op">:</span> <span class="kw">true</span><span class="op">,</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>    }</span></code></pre></div>
+<p>Les traces sont des fichiers zip (un par test), contenant
+l’intégralité du déroulé avec l’équivalent des options développeur :</p>
+<ul>
+<li>sortie console</li>
+<li>traces réseaux</li>
+<li>actions</li>
+<li>capture du déroulé</li>
+<li>code source</li>
+</ul>
+<p>Pour les voir en local :</p>
+<div class="sourceCode" id="cb3"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="ex">npx</span> playwright show-trace <span class="op">&lt;</span>fichier.zip<span class="op">&gt;</span></span></code></pre></div>
+<p>En version web avec deux usages :</p>
+<ul>
+<li>Appli PWA restant en local : https://trace.playwright.dev/</li>
+<li>Appli PWA en fournissant l’URL des traces :
+https://trace.playwright.dev/?trace=http(s)://<domaine>/&lt;fichier.zip&gt;</li>
+</ul>
+<h3 id="capture-décran">Capture d’écran</h3>
+<p>Quelques options complémentaires sur les captures d’écran.</p>
+<h4 id="de-toute-la-page">De toute la page</h4>
+<div class="sourceCode" id="cb4"><pre
+class="sourceCode javascript"><code class="sourceCode javascript"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>Playwright<span class="op">:</span> {</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>      <span class="op">...</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>      <span class="dt">fullPageScreenshots</span><span class="op">:</span> <span class="kw">true</span><span class="op">,</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>    }</span></code></pre></div>
+<h4 id="mêmee-si-le-test-est-ok">Mêmee si le test est OK</h4>
+<div class="sourceCode" id="cb5"><pre
+class="sourceCode javascript"><code class="sourceCode javascript"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>Playwright<span class="op">:</span> {</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>      <span class="op">...</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>      <span class="dt">keepTraceForPassedTests</span><span class="op">:</span> <span class="kw">true</span><span class="op">,</span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>    }</span></code></pre></div>
+<h2 id="regenerer-laide-à-la-saisie-vscode">Regenerer l’aide à la saisie
+VSCode</h2>
+<p>Lancer :</p>
+<div class="sourceCode" id="cb6"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="ex">npx</span> codeceptjs def</span></code></pre></div>
+<p>Cela régénère le fichier steps.d.ts avec les derniers acteurs/pages
+incluent dans le projet.</p>
+<h2 id="utiliser-différentes-configurations">Utiliser différentes
+configurations</h2>
+<p>Pour du multi-environnement, différents navigateurs ou autres
+spécificités:</p>
+<div class="sourceCode" id="cb7"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="ex">npx</span> codeceptjs run <span class="at">-c</span> configs/ci.conf.js </span></code></pre></div>
+<h2 id="utiliser-un-proxy">Utiliser un Proxy</h2>
+<p>Il sera nécessaire de configurer la variable d’environnement :</p>
+<div class="sourceCode" id="cb8"><pre
+class="sourceCode conf"><code class="sourceCode toml"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="dt">https_proxy</span><span class="op">=</span><span class="dt">http</span><span class="er">://</span><span class="dt">mon.proxy</span><span class="er">:</span><span class="dt">8080</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="dt">http_proxy</span><span class="op">=</span><span class="er">$</span><span class="dt">https_proxy</span></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="dt">HTTP_PROXY</span><span class="op">=</span><span class="er">$</span><span class="dt">https_proxy</span></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="dt">HTTPS_PROXY</span><span class="op">=</span><span class="er">$</span><span class="dt">https_proxy</span></span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a><span class="dt">no_proxy</span><span class="op">=</span><span class="dt">mon-repo.proxy</span><span class="er">,</span><span class="dt">mon-repo.node</span></span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a><span class="dt">ELECTRON_GET_USE_PROXY</span><span class="op">=</span><span class="cn">true</span> </span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a><span class="dt">GLOBAL_AGENT_HTTPS_PROXY</span><span class="op">=</span><span class="er">$</span><span class="dt">https_proxy</span></span></code></pre></div>
+<h3 id="spécificité-pour-télécharger-playwright">Spécificité pour
+télécharger Playwright</h3>
+<p>Si vous disposez d’un proxy de repository, il est possible de le
+spécifier pour playwrigth, exemple proxy artifactory:</p>
+<div class="sourceCode" id="cb9"><pre
+class="sourceCode conf"><code class="sourceCode toml"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="dt">PLAYWRIGHT_DOWNLOAD_HOST</span><span class="op">=</span><span class="dt">http</span><span class="er">://</span><span class="dt">mon-repo.proxy</span><span class="er">/</span><span class="dt">artifactory</span><span class="er">/</span><span class="dt">playwright-proxy</span></span></code></pre></div>
+<h2 id="changement-donglet">Changement d’onglet</h2>
+<p>//!TODO</p>
+<h2 id="les-iframe">Les Iframe</h2>
+<p>Il existe deux possibilités pour manipuler le contenu d’une iframe,
+soit avec la fonctionnalité <code>within</code> :</p>
+<div class="sourceCode" id="cb10"><pre
+class="sourceCode javascript"><code class="sourceCode javascript"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">within</span>({<span class="dt">frame</span><span class="op">:</span> <span class="st">&quot;#editor&quot;</span>}<span class="op">,</span> () <span class="kw">=&gt;</span> {</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>  I<span class="op">.</span><span class="fu">vois</span>(<span class="st">&#39;Page&#39;</span>)<span class="op">;</span></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>})<span class="op">;</span></span></code></pre></div>
+<p>Une fois sorti de <code>within</code>, le test reprend le contrôle de
+la page racine.<br />
+Il ne permet cependant pas de gérer une iframe incluse dans une
+iframe.</p>
+<p>Soit avec switchTo() :</p>
+<div class="sourceCode" id="cb11"><pre
+class="sourceCode javascript"><code class="sourceCode javascript"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>I<span class="op">.</span><span class="fu">switchTo</span>(<span class="st">&#39;#editor&#39;</span>)<span class="op">;</span> </span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>I<span class="op">.</span><span class="fu">switchTo</span>(<span class="st">&#39;iframe&#39;</span>)<span class="op">;</span>  <span class="co">//Prend l&#39;iframe peu importe ses propriétés</span></span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>I<span class="op">.</span><span class="fu">vois</span>(<span class="st">&#39;sous page&#39;</span>)<span class="op">;</span></span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>I<span class="op">.</span><span class="fu">switchTo</span>()<span class="op">;</span> <span class="co">//retour à page racine</span></span></code></pre></div>
+<p>Il est alors possible de passer d’iframe en sous iframe sans
+soucis.<br />
+Mais il est nécessaire de retourner à la “racine” en utilisant la même
+méthode sans paramètre.</p>
+<h2 id="réaliser-une-action-non-bloquante">Réaliser une action non
+bloquante</h2>
+<p>Ajouter le plugin à codecept.conf.js :</p>
+<div class="sourceCode" id="cb12"><pre
+class="sourceCode javascript"><code class="sourceCode javascript"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>plugins<span class="op">:</span> {</span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>    <span class="dt">tryTo</span><span class="op">:</span> {</span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>        <span class="dt">enabled</span><span class="op">:</span> <span class="kw">true</span></span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<p>Utilisation :</p>
+<div class="sourceCode" id="cb13"><pre
+class="sourceCode javascript"><code class="sourceCode javascript"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> cookiesAcceptes <span class="op">=</span> <span class="cf">await</span> <span class="fu">tryTo</span>(() <span class="kw">=&gt;</span> Je<span class="op">.</span><span class="fu">click</span>(<span class="st">&quot;#pecookies-continue-btn&quot;</span>))<span class="op">;</span></span></code></pre></div>
+<p>La fonction qui l’exécute devra être async.<br />
+Le résultat est un booléen, permettant ainsi de savoir si l’essai a
+réussi ou non.</p>
+<h2 id="retour-accueil"><a href="README.html">Retour Accueil</a></h2>
+</body>
+</html>

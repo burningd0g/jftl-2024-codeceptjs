@@ -1,0 +1,31 @@
+pipeline {
+    agent 'node'
+
+    options {         
+        buildDiscarder(logRotator(numToKeepStr: '5')) 
+        disableConcurrentBuilds()
+    }
+    
+    triggers {
+        cron('H 1-23/1 * * 1-5')
+    }
+
+    stages {                
+        stage('Test') {
+          steps {
+            sh 'npm install'           
+            sh 'npx playwright install --with-deps chromium'
+            sh 'npm run report:clean'
+            sh 'npm run codeceptjs:headless'
+          }
+        }
+        
+        stage('Report') {
+            steps {
+                sh 'npm run report:cucumber'
+                archiveArtifacts artifacts: 'output/**/*.*', fingerprint: false                       
+                publishHTML (target: [allowMissing: true, alwaysLinkToLastBuild: true, keepAll: true, reportDir: 'output', reportFiles: 'cucumber_report.html', reportName: "Reports"])            
+            }
+        }
+    }    
+}
