@@ -2,13 +2,13 @@ const { I, Je } = inject();
 
 Fonctionnalité('Page Accueil');
 
-Scénario('Faire une recherche',  async ({ Je }) => {
-    Je.suisSurLaPage("/accueil/");
-    const cookiesAcceptes = await tryTo(() => Je.limitTime(10).cliqueSur("#pecookies-continue-btn"));
-    Je.remplisLeChamp("#location1-selectized", "33850");
-    Je.cliqueSur("//span[text()='LEOGNAN']"); 
-    Je.cliqueSur('//button[@data-loading-reset="maj-resultats"]');
+Scénario('Faire une recherche',  async ({ Je,  accueilPage, listeOffresPage, popinCookiesPage  }) => {
+    Je.suisSurLaPage(accueilPage.url);
+    const cookiesAcceptes = await tryTo(() => Je.limitTime(10).cliqueSur(popinCookiesPage.boutons.fermerSansAccepter));
+    Je.remplisLeChamp(accueilPage.champs.lieu, "33850");
+    Je.cliqueSur(accueilPage.listes.communes("LEOGNAN")); 
+    Je.cliqueSur(accueilPage.boutons.recherche);
     Je.waitForNumberOfTabs(2)
     Je.switchToNextTab();
-    Je.voisDansLeChamp("span.subtitle","Leognan");
+    Je.limitTime(30).voisDansLeChamp(listeOffresPage.libelles.lieu,"Leognan");
 });

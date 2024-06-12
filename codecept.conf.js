@@ -18,6 +18,12 @@ exports.config = {
   },
   include: {
     Je: './steps_file.js',
+    accueilPage: './pages/Accueil.js',
+    listeOffresPage: './pages/ListeOffres.js',
+    popinCookiesPage: './pages/PopinCookies.js',
+    espaceCandidatPage: "./pages/EspaceCandidat.js",
+    connexionPage: "./pages/Connexion.js",
+    popinCookiesPage: './pages/PopinCookies.js',
   },
   mocha: {},
   bootstrap: null,
